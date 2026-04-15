@@ -11,6 +11,8 @@
     }
 
     .cfo7s-root {
+      --accent: #6F4389;
+      --accent-hover: #5e3975;
       --bg: #f5f5f3;
       --panel: rgba(255, 255, 255, 0.88);
       --panel-strong: #ffffff;
@@ -26,8 +28,8 @@
       --correct-line: rgba(46, 125, 50, 0.26);
       --wrong-bg: rgba(16, 16, 16, 0.04);
       --wrong-line: rgba(16, 16, 16, 0.10);
-      --button: #111111;
-      --button-hover: #000000;
+      --button: var(--accent);
+      --button-hover: var(--accent-hover);
       --button-text: #ffffff;
       --button-secondary: #f1f1ef;
       --shadow:
@@ -60,14 +62,14 @@
     }
 
     .cfo7s-header {
-      padding: 32px 32px 24px;
-      border-bottom: 1px solid var(--line);
+      padding: 32px 32px 16px;
+       border-bottom: 1px solid var(--line);
       background:
         linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(255,255,255,0.72));
     }
 
     .cfo7s-title {
-      margin: 0 0 10px;
+       margin: 0 0 16px;
       font-size: clamp(30px, 4vw, 44px);
       line-height: 1.02;
       font-weight: 650;
@@ -122,14 +124,14 @@
 }
 
     .cfo7s-tab:focus-visible {
-      outline: 2px solid rgba(16,16,16,0.22);
+      outline: 2px solid rgba(111, 67, 137, 0.35);
       outline-offset: 2px;
     }
 
  .cfo7s-tab.is-active {
-  background: #171717;
+  background: var(--accent);
   color: #ffffff;
-  border-color: #171717;
+  border-color: var(--accent);
 }
 
     .cfo7s-scenario {
@@ -253,15 +255,6 @@
       outline: none;
     }
 
-    .cfo7s-question {
-      padding: 20px 24px 10px;
-      font-size: 16px;
-      line-height: 1.5;
-      color: var(--text-soft);
-      border-top: 1px solid var(--line);
-      background: rgba(250,250,248,0.5);
-    }
-
    .cfo7s-actions {
   display: flex;
   gap: 10px;
@@ -294,8 +287,8 @@
     }
 
     .cfo7s-btn:focus-visible {
-      outline: 2px solid rgba(16,16,16,0.22);
-      outline-offset: 2px;
+      outline: 2px solid rgba(111, 67, 137, 0.35);
+  outline-offset: 2px;
     }
 
     .cfo7s-btn:disabled {
@@ -371,7 +364,7 @@
       }
 
       .cfo7s-header {
-        padding: 24px 18px 18px;
+        padding: 24px 18px 14px;
       }
 
       .cfo7s-body {
@@ -439,10 +432,6 @@
         font-size: 15px;
       }
 
-      .cfo7s-question {
-        padding: 18px 16px 10px;
-      }
-
       .cfo7s-actions {
   display: flex;
   gap: 10px;
@@ -471,7 +460,7 @@
       <div class="cfo7s-header">
         <h2 class="cfo7s-title">Что мешает получить результат — разберите через 7S</h2>
         <p class="cfo7s-subtitle">
-В каждом примере найдите, что мешает получить результат        </p>
+Что здесь мешает получить результат? Выберите строки.</p>
       </div>
 
       <div class="cfo7s-body">
@@ -487,7 +476,7 @@
 
       const scenarios = [
         {
-          title: "Отчетность готовят долго, и сроки не сокращаются",
+          title: "Отчетность готовят долго",
           correctRows: [1, 2],
           rows: [
             {
@@ -503,7 +492,7 @@
               current: "Любые изменения в процессе проходят через несколько уровней согласования"
             }
           ],
-          question: "Что здесь мешает получить результат? Выберите строки.",
+      
           explanation:
             "Цель сократить сроки зафиксировали, но сам процесс этому противоречит. Данные собирают вручную, а изменения долго согласуют — поэтому сроки не сокращаются."
         },
@@ -524,7 +513,7 @@
               current: "За прибыль по направлениям отвечают руководители"
             }
           ],
-          question: "Что здесь мешает получить результат? Выберите строки.",
+ 
           explanation:
             "Цель и ответственность есть, но нет данных, которые показывают, где компания зарабатывает, а где теряет прибыль. Поэтому решения принимают почти вслепую."
         },
@@ -545,7 +534,7 @@
               current: "Новые решения оценивают прежде всего по их влиянию на текущий бизнес"
             }
           ],
-          question: "Что здесь мешает получить результат? Выберите строки.",
+         
           explanation:
             "Компания инвестирует в новые направления, но команда не умеет их развивать, а решения оценивают через влияние на текущий бизнес. Поэтому новые проекты не становятся приоритетом и не дают роста."
         }
@@ -655,10 +644,6 @@
                   ${rowsMarkup}
                 </tbody>
               </table>
-            </div>
-
-            <div class="cfo7s-question">
-              ${escapeHtml(scenario.question)}
             </div>
 
             <div class="cfo7s-actions">
